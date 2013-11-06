@@ -4,7 +4,6 @@ process.bin = process.title = 'bower';
 
 var path = require('path');
 var mout = require('mout');
-var updateNotifier = require('update-notifier');
 var Logger = require('bower-logger');
 var osenv = require('osenv');
 var bower = require('../lib');
@@ -20,7 +19,6 @@ var loglevel;
 var command;
 var commandFunc;
 var logger;
-var notifier;
 var levels = Logger.LEVELS;
 
 options = cli.readOptions({
@@ -126,14 +124,4 @@ logger
 // Warn if HOME is not SET
 if (!osenv.home()) {
     logger.warn('no-home', 'HOME not set, user configuration will not be loaded');
-}
-
-// Check for newer version of Bower
-notifier = updateNotifier({
-    packageName: pkg.name,
-    packageVersion: pkg.version
-});
-
-if (notifier.update && levels.info >= loglevel) {
-    renderer.updateNotice(notifier.update);
 }
