@@ -241,14 +241,14 @@ describe('ResolveCache', function () {
 
             resolveCache.store(tempPackage, {
                 name: 'foo',
-                _source: 'foo',
+                _source: 'foobar',
                 _target: 'some-branch'
             })
             .then(function (dir) {
                 // Ensure mock was called
                 expect(hittedMock).to.be(true);
 
-                expect(dir).to.equal(path.join(cacheDir, md5('foo'), 'some-branch'));
+                expect(dir).to.equal(path.join(cacheDir, md5('foobar'), 'some-branch'));
                 expect(fs.existsSync(dir)).to.be(true);
                 expect(fs.existsSync(path.join(dir, 'baz'))).to.be(true);
                 expect(fs.existsSync(tempPackage)).to.be(false);
