@@ -5,6 +5,7 @@
 require('../lib/core/resolvers/Resolver');
 process.removeAllListeners('uncaughtException');
 
+require('./util/semver');
 require('./core/resolvers/resolver');
 require('./core/resolvers/urlResolver');
 require('./core/resolvers/fsResolver');
